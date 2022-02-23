@@ -10,45 +10,46 @@ namespace ConsoleAppProject.App01
     /// </author>
     public class DistanceConverter
     {
-        public double Miles = 1609.34;
-        public double Feet = 0.3048;
-        public int Metres = 1;
+        public static double miles = 1609.34;
+        public static double feet = 0.3048;
+        public static double metres = 1;
 
         public void Run()
         {
             OutputHeading();
-            Console.WriteLine("from output is: " + UnitInputFrom());
-            UnitInputTo();
-          //  Conversion();
+            Console.WriteLine("Output is: " + Conversion());
         }
 
-        private static int UnitInput()
+        private static double UnitInput()
         {
             Console.WriteLine("1: Miles");
             Console.WriteLine("2: Feet");
             Console.WriteLine("3: Metres");
             int userChoice = Convert.ToInt32(Console.ReadLine());
+            double choice = 0;
+            if (userChoice == 1) { choice = miles; }
+            else if (userChoice == 2) { choice = feet; }
+            else if (userChoice == 3) { choice = metres; }
             //Console.WriteLine("User Choice is: " + userChoice);
-            return userChoice;
+            return choice;
         }
-        private static int UnitInputFrom()
+
+        private static double UnitInputFrom()
         {
             Console.WriteLine("Select unit type you wish to convert from:");
             return UnitInput();
         }
-        private static int UnitInputTo()
+        private static double UnitInputTo()
         {
             Console.WriteLine("Select unit type you wish to convert to:");
             return UnitInput();
         }
-        /* private static double Conversion()
+        private static double Conversion()
         {
-        double userInput = InitialInput();
-        int fromInput = UnitInputFrom();
-        int toInput = UnitInputTo();
+        double sum = (InitialInput() * UnitInputFrom()) * UnitInputTo();
         return sum;
         }
-        */
+       
         private static double InitialInput()
         {
             Console.WriteLine("Input a number wish to convert:");

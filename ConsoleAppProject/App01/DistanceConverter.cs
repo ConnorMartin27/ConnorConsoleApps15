@@ -6,48 +6,49 @@ namespace ConsoleAppProject.App01
     /// Please describe the main features of this App
     /// </summary>
     /// <author>
-    /// Derek version 0.1
+    /// Connor Martin version 0.2
     /// </author>
     public class DistanceConverter
     {
-        public static double miles = 1609.34;
-        public static double feet = 0.3048;
-        public static double metres = 1;
-
         public void Run()
         {
             OutputHeading();
             Console.WriteLine("Output is: " + Conversion());
         }
 
-        private static double UnitInput()
+        private static int UnitInput()
         {
             Console.WriteLine("1: Miles");
             Console.WriteLine("2: Feet");
             Console.WriteLine("3: Metres");
             int userChoice = Convert.ToInt32(Console.ReadLine());
-            double choice = 0;
-            if (userChoice == 1) { choice = miles; }
-            else if (userChoice == 2) { choice = feet; }
-            else if (userChoice == 3) { choice = metres; }
             //Console.WriteLine("User Choice is: " + userChoice);
-            return choice;
+            return userChoice;
         }
 
-        private static double UnitInputFrom()
+        private static int UnitInputFrom()
         {
             Console.WriteLine("Select unit type you wish to convert from:");
             return UnitInput();
         }
-        private static double UnitInputTo()
+        private static int UnitInputTo()
         {
             Console.WriteLine("Select unit type you wish to convert to:");
             return UnitInput();
         }
         private static double Conversion()
         {
-        double sum = (InitialInput() * UnitInputFrom()) * UnitInputTo();
-        return sum;
+        int fromUnit = UnitInputFrom();
+        int toUnit = UnitInputTo();
+        double num = 0;
+        if (fromUnit == 1) { num = InitialInput() * 1609.34; }
+        if (fromUnit == 2) { num = InitialInput() / 3.281; }
+        if (fromUnit == 3) { num = InitialInput(); }
+
+        if (toUnit == 1) { num /= 1609.34; }
+        if (toUnit == 2) { num *= 3.281; }
+        //3 would return in metres
+        return num;
         }
        
         private static double InitialInput()

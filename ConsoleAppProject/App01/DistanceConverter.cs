@@ -10,10 +10,10 @@ namespace ConsoleAppProject.App01
     /// </author>
     public class DistanceConverter
     {
+        public string fromDisplay;
         public void Run()
         {
-            OutputHeading();
-            Console.WriteLine("Output is: " + Conversion());
+           
         }
 
         private static int UnitInput()
@@ -36,19 +36,39 @@ namespace ConsoleAppProject.App01
             Console.WriteLine("Select unit type you wish to convert to:");
             return UnitInput();
         }
-        private static double Conversion()
+        public void Conversion()
         {
-        int fromUnit = UnitInputFrom();
-        int toUnit = UnitInputTo();
-        double num = 0;
-        if (fromUnit == 1) { num = InitialInput() * 1609.34; }
-        if (fromUnit == 2) { num = InitialInput() / 3.281; }
-        if (fromUnit == 3) { num = InitialInput(); }
+            OutputHeading();
+            int fromUnit = UnitInputFrom();
+            int toUnit = UnitInputTo();
+            string fromDisplay;
+            string toDisplay = null;
+            double num = 0;
+            if (fromUnit == 1) { 
+                num = InitialInput() * 1609.34;
+                fromDisplay = "Miles";
+            }
+            if (fromUnit == 2) { 
+                num = InitialInput() / 3.281;
+                fromDisplay = "Feet";
+            }
+            if (fromUnit == 3) { 
+                num = InitialInput();
+                fromDisplay = "Metres";
+            }
 
-        if (toUnit == 1) { num /= 1609.34; }
-        if (toUnit == 2) { num *= 3.281; }
-        //3 would return in metres
-        return num;
+
+            if (toUnit == 1) {
+                toDisplay = "Miles";
+                num /= 1609.34; 
+            }
+            if (toUnit == 2) {
+                toDisplay = "Feet";
+                num *= 3.281; 
+            }
+            if (toUnit == 3) { toDisplay = "Metres"; }
+            //3 would return in metres
+            Console.WriteLine("Output is " + num + " " + toDisplay);
         }
        
         private static double InitialInput()

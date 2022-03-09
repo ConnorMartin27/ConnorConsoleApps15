@@ -10,17 +10,13 @@ namespace ConsoleAppProject.App01
     /// </author>
     public class DistanceConverter
     {
-        public string fromDisplay;
-        public void Run()
-        {
-           
-        }
-
+        //used for the from and to unit selection
         private static int UnitInput()
         {
             Console.WriteLine("1: Miles");
             Console.WriteLine("2: Feet");
             Console.WriteLine("3: Metres");
+            //checks if the input is an int and returns said int if success
             bool success = Int32.TryParse(Console.ReadLine(), out int userChoice);
             if (success) {
                 Console.WriteLine("User Choice is: " + userChoice);
@@ -29,11 +25,13 @@ namespace ConsoleAppProject.App01
             else
             {
                 Console.WriteLine("Invalid unit entered");
+                //defaults to 0 on input that isn't an int
                 userChoice = 0;
                 return userChoice;
             }
         }
 
+        //two methods which essentially do the same thing, ask for an input then store that input
         private static int UnitInputFrom()
         {
             Console.WriteLine("Select unit type you wish to convert from:");

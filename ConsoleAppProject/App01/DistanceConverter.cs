@@ -42,46 +42,49 @@ namespace ConsoleAppProject.App01
             Console.WriteLine("Select unit type you wish to convert to:");
             return UnitInput();
         }
+        //main method which does most of the work, is responsible for the final output
         public void Conversion()
         {
+            //outputs the heading
             OutputHeading();
             int fromUnit = UnitInputFrom();
             int toUnit = UnitInputTo();
             string fromDisplay;
             string toDisplay = null;
             double num = 0;
+            //checks if the user selected a correct input otherwise output "invalid"
             switch (fromUnit)
             {
                 case 1:
-                    num = InitialInput() * 1609.34;
+                    num = InitialInput() * 1609.34; // converts metres to miles
                     fromDisplay = "Miles";
                     break;
 
                 case 2:
-                    num = InitialInput() / 3.281;
+                    num = InitialInput() / 3.281; // converts metres to feet
                     fromDisplay = "Feet";
                     break;
                 case 3:
-                    num = InitialInput();
-                    fromDisplay = "Metres";
+                    num = InitialInput(); //no conversion needed cause default is metres
+                    fromDisplay = "Metres"; 
                     break;
                 default:
                     Console.WriteLine("Invalid from unit entered");
                     break;
             }
-
+            //checks if the user selected a correct input otherwise output "invalid"
             switch (toUnit)
             {
                 case 1:
                     toDisplay = "Miles";
-                    num /= 1609.34;
+                    num /= 1609.34;  // converts to miles
                     break;
                 case 2:
                     toDisplay = "Feet";
-                    num *= 3.281;
+                    num *= 3.281; // converts to feet
                     break;
                 case 3:
-                    toDisplay = "Metres";
+                    toDisplay = "Metres"; //default output cause 
                     break;
 
                 default:
@@ -90,8 +93,9 @@ namespace ConsoleAppProject.App01
 
             }
             //3 would return in metres
-            Console.WriteLine("Output is " + num + " " + toDisplay);
+            Console.WriteLine("Output is " + num + " " + toDisplay); //outputs the converted number
         }
+        //is responsible for the number that the user wants  converted in the from and to conversion
         private static double InitialInput()
         {
             Console.WriteLine("Input a number wish to convert:");

@@ -21,9 +21,17 @@ namespace ConsoleAppProject.App01
             Console.WriteLine("1: Miles");
             Console.WriteLine("2: Feet");
             Console.WriteLine("3: Metres");
-            int userChoice = Convert.ToInt32(Console.ReadLine());
-            //Console.WriteLine("User Choice is: " + userChoice);
-            return userChoice;
+            bool success = Int32.TryParse(Console.ReadLine(), out int userChoice);
+            if (success) {
+                Console.WriteLine("User Choice is: " + userChoice);
+                return userChoice;
+            }
+            else
+            {
+                Console.WriteLine("Invalid unit entered");
+                userChoice = 0;
+                return userChoice;
+            }
         }
 
         private static int UnitInputFrom()
@@ -44,46 +52,73 @@ namespace ConsoleAppProject.App01
             string fromDisplay;
             string toDisplay = null;
             double num = 0;
-            if (fromUnit == 1) { 
-                num = InitialInput() * 1609.34;
-                fromDisplay = "Miles";
-            }
-            if (fromUnit == 2) { 
-                num = InitialInput() / 3.281;
-                fromDisplay = "Feet";
-            }
-            if (fromUnit == 3) { 
-                num = InitialInput();
-                fromDisplay = "Metres";
+            switch (fromUnit)
+            {
+                case 1:
+                    num = InitialInput() * 1609.34;
+                    fromDisplay = "Miles";
+                    break;
+
+                case 2:
+                    num = InitialInput() / 3.281;
+                    fromDisplay = "Feet";
+                    break;
+                case 3:
+                    num = InitialInput();
+                    fromDisplay = "Metres";
+                    break;
+                default:
+                    Console.WriteLine("Invalid from unit entered");
+                    break;
             }
 
+            switch (toUnit)
+            {
+                case 1:
+                    toDisplay = "Miles";
+                    num /= 1609.34;
+                    break;
+                case 2:
+                    toDisplay = "Feet";
+                    num *= 3.281;
+                    break;
+                case 3:
+                    toDisplay = "Metres";
+                    break;
 
-            if (toUnit == 1) {
-                toDisplay = "Miles";
-                num /= 1609.34; 
+                default:
+                    Console.WriteLine("Invalid to unit entered");
+                    break;
+
             }
-            if (toUnit == 2) {
-                toDisplay = "Feet";
-                num *= 3.281; 
-            }
-            if (toUnit == 3) { toDisplay = "Metres"; }
             //3 would return in metres
             Console.WriteLine("Output is " + num + " " + toDisplay);
         }
-       
         private static double InitialInput()
         {
             Console.WriteLine("Input a number wish to convert:");
-            double userNumber = Convert.ToDouble(Console.ReadLine());
+            bool success = Double.TryParse(Console.ReadLine(), out double userNumber);
+            if (success)
+            {
+                Console.WriteLine("User Choice is: " + userNumber);
+                return userNumber;
+            }
+            else
+            {
+                Console.WriteLine("Invalid unit entered");
+                userNumber = 0;
+                return userNumber;
+            }
             //Console.WriteLine("User Choice is: " + userNumber);
-            return userNumber;
         }
         private static void OutputHeading()
         {
             Console.WriteLine();
             Console.WriteLine(" =================================================");
             Console.WriteLine("    Distance Converter ");
-            Console.WriteLine("        by Connor Martin                                  ");
+            Console.WriteLine("    This application takes two distances, and then a number,");
+            Console.WriteLine("    then it outputs the first distance converted into the second");
+            Console.WriteLine("     by Connor Martin                                  ");
             Console.WriteLine(" =================================================");
             Console.WriteLine();
         }

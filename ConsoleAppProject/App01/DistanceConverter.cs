@@ -3,7 +3,7 @@
 namespace ConsoleAppProject.App01
 {
     /// <summary>
-    /// Please describe the main features of this App
+    /// Takes two distances and a number and converts that number using the first distance unit as from and the second as a to
     /// </summary>
     /// <author>
     /// Connor Martin version 0.2
@@ -49,7 +49,6 @@ namespace ConsoleAppProject.App01
             OutputHeading();
             int fromUnit = UnitInputFrom();
             int toUnit = UnitInputTo();
-            string fromDisplay;
             string toDisplay = null;
             double num = 0;
             //checks if the user selected a correct input otherwise output "invalid"
@@ -57,16 +56,13 @@ namespace ConsoleAppProject.App01
             {
                 case 1:
                     num = InitialInput() * 1609.34; // converts metres to miles
-                    fromDisplay = "Miles";
                     break;
 
                 case 2:
                     num = InitialInput() / 3.281; // converts metres to feet
-                    fromDisplay = "Feet";
                     break;
                 case 3:
                     num = InitialInput(); //no conversion needed cause default is metres
-                    fromDisplay = "Metres"; 
                     break;
                 default:
                     Console.WriteLine("Invalid from unit entered");

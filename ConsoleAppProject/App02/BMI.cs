@@ -34,7 +34,6 @@ namespace ConsoleAppProject.App02
                 if (userBMI >= 30 && userBMI <= 34.9) { Console.WriteLine("WHO classifies this BMI as: Obese Class 1"); }
                 if (userBMI >= 35 && userBMI <= 39.9) { Console.WriteLine("WHO classifies this BMI as: Obese Class 2"); }
                 if (userBMI >= 40) { Console.WriteLine("WHO classifies this BMI as: Obese Class 3"); }
-                else { Console.WriteLine("Invalid BMI"); }
                 Console.WriteLine("User BMI is: " + userBMI);
             }
             //in case of imperial selected
@@ -60,7 +59,6 @@ namespace ConsoleAppProject.App02
                 if (userBMI >= 30 && userBMI <= 34.9) { Console.WriteLine("WHO classifies this BMI as: Obese Class 1"); }
                 if (userBMI >= 35 && userBMI <= 39.9) { Console.WriteLine("WHO classifies this BMI as: Obese Class 2"); }
                 if (userBMI >= 40) { Console.WriteLine("WHO classifies this BMI as: Obese Class 3"); }
-                else { Console.WriteLine("Invalid BMI"); }
                 Console.WriteLine("User BMI is: " + userBMI); 
             }
         }

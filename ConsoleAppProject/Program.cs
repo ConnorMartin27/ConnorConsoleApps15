@@ -32,6 +32,7 @@ namespace ConsoleAppProject
             Console.WriteLine("    Please choose the application you wish to launch ");
             Console.WriteLine("    1: Distance Convert                              ");
             Console.WriteLine("    2: BMI Calculator                                ");
+            Console.WriteLine("    3: Student Grades                                ");
             Console.WriteLine(" =================================================   ");
             Console.WriteLine();
             bool success = Int32.TryParse(Console.ReadLine(), out int userChoice);
@@ -44,6 +45,10 @@ namespace ConsoleAppProject
                 case 2:
                     BMI bmi = new BMI();
                     bmi.Run();
+                break;
+                case 3:
+                    StudentGrades studentGrades = new StudentGrades();
+                    studentGrades.Run();
                 break;
             }
 

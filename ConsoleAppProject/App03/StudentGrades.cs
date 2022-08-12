@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using ConsoleAppProject.Helpers;
 
 namespace ConsoleAppProject.App03
 {
@@ -13,8 +10,7 @@ namespace ConsoleAppProject.App03
     /// </summary>
     public class StudentGrades
     {
-        
-        List<Student> studentsList = new List<Student>();
+        private List<Student> studentsList = new List<Student>();
         
         private bool AddStudent()
         {
@@ -99,48 +95,54 @@ namespace ConsoleAppProject.App03
 
         private void AddMark()
         {
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Please input Student ID");
-            Console.WriteLine();
-            Console.WriteLine();
-            if (Int32.TryParse(Console.ReadLine(), out int id))
+            while (true)
             {
-                //Console.WriteLine("User Choice is: " + id);
-            }
-            else
-            {
-                Console.WriteLine("Invalid Unit Type Selected");
-                Console.WriteLine("Do you want to try again? [Y/N]");
-                string answer = Console.ReadLine().ToUpper();
-                if (answer == "Y")
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("Please input Student ID");
+                Console.WriteLine();
+                Console.WriteLine();
+                if (Int32.TryParse(Console.ReadLine(), out int id))
                 {
-                    AddMark();
+                    //Console.WriteLine("User Choice is: " + id);
                 }
-            }
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Please input Student Mark");
-            Console.WriteLine();
-            Console.WriteLine();
-            if (Int32.TryParse(Console.ReadLine(), out int mark))
-            {
-               //Console.WriteLine("User Choice is: " + mark); 
-                studentsList[studentsList.FindIndex(student => student.Id.Equals(id))].Mark = mark;
-                DisplayList();
-            }
-            else
-            {
-                Console.WriteLine("Invalid input");
-                Console.WriteLine("Do you want to try again? [Y/N]");
-                string answer = Console.ReadLine().ToUpper();
-                if (answer == "Y")
+                else
                 {
-                    AddMark();
+                    Console.WriteLine("Invalid Unit Type Selected");
+                    Console.WriteLine("Do you want to try again? [Y/N]");
+                    string answer = Console.ReadLine().ToUpper();
+                    if (answer == "Y")
+                    {
+                        AddMark();
+                    }
                 }
+
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("Please input Student Mark");
+                Console.WriteLine();
+                Console.WriteLine();
+                if (Int32.TryParse(Console.ReadLine(), out int mark))
+                {
+                    //Console.WriteLine("User Choice is: " + mark); 
+                    studentsList[studentsList.FindIndex(student => student.Id.Equals(id))].Mark = mark;
+                    DisplayList();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input");
+                    Console.WriteLine("Do you want to try again? [Y/N]");
+                    string answer = Console.ReadLine().ToUpper();
+                    if (answer == "Y")
+                    {
+                        continue;
+                    }
+                }
+
+                break;
             }
         }
-        
+
         private void DisplayList()
         {
             Console.WriteLine("                     List                            ");
@@ -171,17 +173,17 @@ namespace ConsoleAppProject.App03
             {
                 profile.Add(CalculateGrade(student.Mark));
             }
-            var A = ((double)profile.Count(i=>i=="A"))/profile.Count * 100;
-            var B = ((double)profile.Count(i=>i=="B"))/profile.Count * 100;
-            var C = ((double)profile.Count(i=>i=="C"))/profile.Count * 100;
-            var D = ((double)profile.Count(i=>i=="D"))/profile.Count * 100;
-            var F = ((double)profile.Count(i=>i=="F"))/profile.Count * 100;
+            var a = ((double)profile.Count(i=>i=="A"))/profile.Count * 100;
+            var b = ((double)profile.Count(i=>i=="B"))/profile.Count * 100;
+            var c = ((double)profile.Count(i=>i=="C"))/profile.Count * 100;
+            var d = ((double)profile.Count(i=>i=="D"))/profile.Count * 100;
+            var f = ((double)profile.Count(i=>i=="F"))/profile.Count * 100;
             var invalid = ((double)profile.Count(i=>i=="Invalid"))/profile.Count * 100;
-            Console.WriteLine("A = " + A + "%");
-            Console.WriteLine("B = " + B + "%");
-            Console.WriteLine("C = " + C + "%");
-            Console.WriteLine("D = " + D + "%");
-            Console.WriteLine("F = " + F + "%");
+            Console.WriteLine("A = " + a + "%");
+            Console.WriteLine("B = " + b + "%");
+            Console.WriteLine("C = " + c + "%");
+            Console.WriteLine("D = " + d + "%");
+            Console.WriteLine("F = " + f + "%");
             Console.WriteLine();  
             Console.WriteLine(" =================================================   ");
             Console.WriteLine();

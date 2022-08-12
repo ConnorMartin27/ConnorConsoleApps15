@@ -25,7 +25,7 @@ namespace ConsoleAppProject.App03
             Console.WriteLine();
             if (Int32.TryParse(Console.ReadLine(), out int id))
             {
-                Console.WriteLine("User Choice is: " + id);
+                //Console.WriteLine("User Choice is: " + id);
             }
             else
             {
@@ -47,7 +47,7 @@ namespace ConsoleAppProject.App03
             string name = Console.ReadLine();
             if (name.GetType() == typeof(string))
             {
-                Console.WriteLine("User Choice is: " + name);
+                //Console.WriteLine("User Choice is: " + name);
             }
             else
             {
@@ -97,7 +97,7 @@ namespace ConsoleAppProject.App03
             return "Invalid";
         }
 
-        private bool AddMark()
+        private void AddMark()
         {
             Console.WriteLine();
             Console.WriteLine();
@@ -106,7 +106,7 @@ namespace ConsoleAppProject.App03
             Console.WriteLine();
             if (Int32.TryParse(Console.ReadLine(), out int id))
             {
-                Console.WriteLine("User Choice is: " + id);
+                //Console.WriteLine("User Choice is: " + id);
             }
             else
             {
@@ -117,7 +117,6 @@ namespace ConsoleAppProject.App03
                 {
                     AddMark();
                 }
-                else return false;
             }
             Console.WriteLine();
             Console.WriteLine();
@@ -126,10 +125,9 @@ namespace ConsoleAppProject.App03
             Console.WriteLine();
             if (Int32.TryParse(Console.ReadLine(), out int mark))
             {
-                Console.WriteLine("User Choice is: " + mark);
-                studentsList[id].Mark = mark;
+               //Console.WriteLine("User Choice is: " + mark); 
+                studentsList[studentsList.FindIndex(student => student.Id.Equals(id))].Mark = mark;
                 DisplayList();
-                return true;
             }
             else
             {
@@ -140,9 +138,7 @@ namespace ConsoleAppProject.App03
                 {
                     AddMark();
                 }
-                else return false;
             }
-            return false;
         }
         
         private void DisplayList()
@@ -153,9 +149,6 @@ namespace ConsoleAppProject.App03
             foreach (var student in studentsList)
             { 
                 Console.WriteLine("ID = " + student.Id + " Name = " + student.Name + " Mark = " + student.Mark + " Grade = " + CalculateGrade(student.Mark));
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("");
             }
             Console.WriteLine();  
             Console.WriteLine(" =================================================   ");
@@ -231,7 +224,7 @@ namespace ConsoleAppProject.App03
             Console.WriteLine("    1: Add a Student                                 ");
             Console.WriteLine("    2: Display List of Students                      ");
             Console.WriteLine("    3: Input a mark for a Student                    ");
-            Console.WriteLine("    4: Student Profile    ");
+            Console.WriteLine("    4: Student Profile                               ");
             Console.WriteLine(" =================================================   ");
             bool success = Int32.TryParse(Console.ReadLine(), out int userChoice);
             switch (userChoice)

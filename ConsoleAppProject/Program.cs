@@ -33,6 +33,7 @@ namespace ConsoleAppProject
             Console.WriteLine("    1: Distance Convert                              ");
             Console.WriteLine("    2: BMI Calculator                                ");
             Console.WriteLine("    3: Student Grades                                ");
+            Console.WriteLine("    4: Rock,Paper,Scissors                           ");
             Console.WriteLine(" =================================================   ");
             Console.WriteLine();
             bool success = Int32.TryParse(Console.ReadLine(), out int userChoice);
@@ -50,6 +51,10 @@ namespace ConsoleAppProject
                     StudentGrades studentGrades = new StudentGrades();
                     studentGrades.Run();
                 break;
+                case 4:
+                    Game game = new Game();
+                    game.Play();
+                    break;
             }
 
         }

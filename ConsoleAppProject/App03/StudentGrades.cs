@@ -63,7 +63,7 @@ namespace ConsoleAppProject.App03
             return true;
         }
 
-        private string CalculateGrade(int mark)
+        public string CalculateGrade(int mark)
         {
             
             if (mark == 100 || mark >= 70)

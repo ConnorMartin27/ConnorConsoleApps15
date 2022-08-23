@@ -1,0 +1,20 @@
+﻿@startuml
+
+
+class Game {
+    +Play()
+    
+}
+Game -> Play
+class Play {
+        +userScore: int
+        +computerScore: int
+        +keepPlaying:bool
+        -rounds: int
+        +userChoiceName: string
+        +userChoice: string
+        +computerChoice: int
+        +victory: int
+}
+
+@enduml
